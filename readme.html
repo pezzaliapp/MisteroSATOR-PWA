@@ -12,61 +12,53 @@ a:hover{text-decoration:underline}
 code{background:#111a35;padding:2px 6px;border-radius:5px}
 hr{border:0;border-top:1px solid #1c2550;margin:24px 0}
 section{margin-bottom:28px}
+.center{text-align:center}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
 </style>
 </head>
 <body>
 
 <h1>🌀 Il Mistero del SATOR — Quadrato Magico (PWA)</h1>
-<p><strong>Ideato e sviluppato da <a href="https://www.alessandropezzali.it">Alessandro Pezzali</a> — pezzaliAPP © 2025</strong></p>
-
-<hr>
+<p><strong>Ideato e sviluppato da Alessandro Pezzali — pezzaliAPP © 2025</strong></p>
 
 <section>
-<h2>📖 Descrizione</h2>
-<p><em>Il Mistero del SATOR</em> è un’esperienza interattiva ispirata al celebre <strong>Quadrato Magico di Pompei</strong>,
-un palindromo perfetto composto da cinque parole e cinque lettere ciascuna:</p>
-<p style="font-family:monospace; font-size:18px; text-align:center; line-height:1.2em;">
+<h2>📖 Storia in breve</h2>
+<p>Il Quadrato <em>SATOR AREPO TENET OPERA ROTAS</em> è un palindromo perfetto attestato fin dall’antichità
+(Pompei) e ripreso in epoca medievale. Le sue letture spaziano dalla simbolica cristiana
+(<em>PATER NOSTER</em> con le lettere <strong>A/Ω</strong>) a interpretazioni numerologiche.</p>
+<p class="center mono" style="font-size:18px; line-height:1.2em">
 SATOR<br>AREPO<br>TENET<br>OPERA<br>ROTAS
 </p>
-<p>L’app esplora il significato simbolico, matematico e spirituale del SATOR, offrendo quattro modalità di gioco e riflessione.</p>
 </section>
 
 <section>
 <h2>🎮 Modalità</h2>
 <ul>
-<li><b>Quadrato</b> — scambia righe o colonne per ricomporre il quadrato perfetto.</li>
-<li><b>Lettere</b> — scambia due lettere a tua scelta.</li>
-<li><b>Enigma</b> — osserva la croce TENET e le lettere AΩ (Alfa/Omega).</li>
-<li><b>Libero</b> — manipola senza vincoli, ruota e contempla la simmetria.</li>
+  <li><b>Quadrato</b>: scambia righe o colonne (toggle Righe/Colonne).</li>
+  <li><b>Lettere</b>: scambia due lettere toccando due celle.</li>
+  <li><b>Enigma</b>: evidenzia TENET orizz./vert. e, con <b>AΩ</b>, tutte le A e O.</li>
+  <li><b>Libero</b>: manipola senza vincoli, prova <b>Ruota 90°</b>.</li>
 </ul>
+<p><i>v2.3 Desk layout</i>: su desktop pannello a sinistra e griglia a destra; su smartphone layout a colonna.</p>
 </section>
 
 <section>
-<h2>🧠 Origine del progetto</h2>
-<p>Il <strong>Quadrato Magico</strong> è stato ritrovato in diversi siti archeologici (Pompei, Dura Europos, Cirencester).
-L’app nasce per tradurre quell’antico mistero in un linguaggio moderno, mantenendo la sua natura enigmatica ma rendendolo accessibile,
-giocabile e meditativo.</p>
-</section>
-
-<section>
-<h2>⚙️ Dettagli tecnici</h2>
+<h2>⚙️ Tecnico</h2>
 <ul>
-<li>Codice: JavaScript puro (ES6) — HTML5 — CSS3 responsive</li>
-<li>Compatibilità: Chrome, Safari, Edge, Firefox</li>
-<li>Offline-ready grazie a Service Worker</li>
-<li>Installabile come PWA (Android, iOS, macOS)</li>
+  <li>HTML5 + CSS3 + JavaScript puro (nessun framework)</li>
+  <li>Service Worker (cache-first con auto-update)</li>
+  <li>Installabile come PWA su iOS/Android/macOS</li>
 </ul>
 </section>
 
 <section>
-<h2>🪪 Licenza e crediti</h2>
-<p>© 2025 <strong>Alessandro Pezzali — pezzaliAPP</strong></p>
-<p>Distribuito con licenza <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0</a></p>
-<p class="small">Il design, la logica e la struttura sono opere originali tutelate dal diritto d’autore.</p>
+<h2>🪪 Licenza</h2>
+<p>© 2025 Alessandro Pezzali — pezzaliAPP • Licenza <a href="LICENSE">CC BY‑NC‑SA 4.0</a>.</p>
+<p>Il design, la logica e la struttura sono opere originali tutelate dalla normativa sul diritto d’autore.</p>
 </section>
 
 <section>
-<h2>🌐 Collegamenti</h2>
+<h2>🌐 Link</h2>
 <ul>
 <li><a href="https://www.alessandropezzali.it">Sito ufficiale</a></li>
 <li><a href="https://github.com/pezzaliapp">GitHub — pezzaliAPP</a></li>

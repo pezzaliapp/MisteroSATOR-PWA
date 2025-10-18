@@ -82,3 +82,43 @@ button{padding: clamp(6px, 1.4vw, 10px) clamp(8px, 2.2vw, 14px); font-size: clam
   #hud{font-size: 12px}
   #board{width: min(90vw, 70dvh)}
 }
+
+/* ===== v2.3 Desk Layout: left info panel + right board ===== */
+.shell{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(8px, 1.5vw, 16px);
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: clamp(10px, 2vw, 22px);
+  min-height: calc(100dvh - 64px);
+}
+.panel{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-right: 6px;
+}
+.panel .controls{display:flex; flex-direction:column; gap:10px}
+.panel .tabs{display:flex; flex-wrap:wrap; gap:8px}
+.panel .group{display:flex; gap:8px; flex-wrap:wrap}
+.boardWrap{display:flex; align-items:center; justify-content:center}
+#board{ width: min(88vw, 82dvh); max-width: 760px; }
+@media (min-width: 900px){
+  body{overflow:hidden}
+  main.shell{min-height: calc(100dvh - 56px)}
+  footer{position:fixed; left:0; right:0; bottom:0; background:#0e1533cc; border-top:1px solid var(--line)}
+}
+@media (max-width: 860px){
+  .shell{display:block}
+  body{overflow:auto}
+  #board{width: min(92vw, 88dvh)}
+}
+
+/* ===== v2.4 About modal ===== */
+.modal{position:fixed; inset:0; background:#0008; display:flex; align-items:center; justify-content:center; z-index:60}
+.modal.hidden{display:none}
+.modal-card{background:#0f1736; border:1px solid var(--line); border-radius:14px; padding:18px; width:min(560px, 92vw); box-shadow:0 24px 60px #000a}
+.modal-card h2{margin-top:0; color:var(--cta)}
+.modal-close{position:absolute; right:16px; top:12px; background:transparent; border:1px solid var(--line); border-radius:10px; padding:4px 8px; color:var(--ink); cursor:pointer}
+header{gap:10px}

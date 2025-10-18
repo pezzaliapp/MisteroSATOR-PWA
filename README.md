@@ -1,78 +1,70 @@
 # 🌀 Il Mistero del SATOR — Quadrato Magico (PWA)
 
-**Ideato e sviluppato da [Alessandro Pezzali](https://www.alessandropezzali.it) — pezzaliAPP (© 2025)**
+**Ideato e sviluppato da Alessandro Pezzali — pezzaliAPP (© 2025)**
+
+> “Il SATOR non è solo un enigma. È un invito a leggere il mondo in ogni direzione.”
 
 ---
 
-## 📖 Descrizione
+## 📖 Cos'è
+Un gioco-esperienza ispirato al *Quadrato Magico* più famoso: **SATOR AREPO TENET OPERA ROTAS**.  
+Palindromo perfetto: le cinque parole si leggono uguali in orizzontale e in verticale.
 
-**Il Mistero del SATOR** è un esperimento interattivo ispirato al celebre *Quadrato Magico* di Pompei:  
-un palindromo perfetto di cinque parole e cinque lettere ciascuna — **SATOR AREPO TENET OPERA ROTAS** —  
-che si leggono allo stesso modo in orizzontale e verticale.
-
-L’app è una **Progressive Web App** (PWA) completamente *offline-ready*, concepita per unire storia, logica e design.
+L’app è una **Progressive Web App** (PWA) *offline-ready* pensata per unire storia, logica e contemplazione.
 
 ---
 
 ## 🎮 Modalità di gioco
+- **Quadrato** — scambia righe/colonne per ripristinare il quadrato perfetto.  
+- **Lettere** — scambia due lettere (swap per-cella) come in un puzzle.  
+- **Enigma** — evidenzia la croce TENET e, con **AΩ**, tutte le A e O (alfa/omega).  
+- **Libero** — manipola senza vincoli; prova **Ruota 90°** per la rotazione dell’intera griglia.
 
-| Modalità | Descrizione |
-|-----------|-------------|
-| 🧮 **Quadrato** | Scambia righe o colonne per ricomporre il quadrato magico. |
-| 🧩 **Lettere** | Clicca due lettere per scambiarle come in un puzzle visivo. |
-| 🔮 **Enigma** | Evidenzia la croce TENET e, con il tasto **AΩ**, mostra Alfa e Omega. |
-| 🌌 **Libero** | Manipola la griglia senza vincoli e ruotala con **Ruota 90°**. |
-
-Ogni modalità rappresenta una diversa chiave di lettura del simbolo del SATOR:  
-razionale, ludica, mistica e contemplativa.
+**v2.3 Desk layout**: su desktop il pannello informativo è **a sinistra** e il gioco **a destra**, tutto visibile senza scroll.  
+Su smartphone l’interfaccia è ottimizzata in colonna.
 
 ---
 
-## 🏗️ Struttura tecnica
-
-- Linguaggio: **JavaScript puro (ES6)** + HTML5 + CSS3 responsive  
-- Framework: **nessuno** (zero dipendenze, codice nativo e leggero)  
-- Cache: **Service Worker** con aggiornamento automatico  
-- Compatibilità: **Chrome, Safari, Firefox, Edge** (desktop e mobile)  
-- Installabile come **PWA** su Android, iOS e macOS  
+## 🧠 Breve storia del SATOR
+Il quadrato SATOR è attestato a **Pompei** (I sec.), ricorre in **manoscritti medievali** e in vari edifici sacri europei.  
+Interpretazioni celebri: lettura cristiana con **PATER NOSTER** e le lettere **A/Ω**, croce centrale sulla N;  
+altre ipotesi spaziano da simboliche a cabalistiche. L’app rende **interattiva** questa eredità culturale.
 
 ---
 
-## 🧠 Origine del progetto
+## ⚙️ Struttura tecnica
+- **Zero framework**: HTML5 + CSS3 + JavaScript puro
+- **Service Worker**: cache-first con auto-aggiornamento
+- **PWA installabile** su iOS/Android/macOS
+- **Responsive**: griglia con `clamp()` e `dvh`, touch-target ≥48px
 
-Il Quadrato Magico di *SATOR AREPO TENET OPERA ROTAS* è uno dei più antichi enigmi dell’umanità.  
-Ritrovato a Pompei, in basiliche medievali e in manoscritti carolingi, ha attraversato secoli di interpretazioni:  
-da simbolo cristiano (Pater Noster) a enigma cabalistico.
-
-Questa app vuole renderlo **interattivo**, come esperienza visiva e meditativa, mantenendo intatto il suo mistero.
-
----
-
-## 📱 Installazione
-
-1. Apri l’app in un browser moderno o visita il link ufficiale.  
-2. Tocca **Aggiungi alla schermata Home** (iOS/Android).  
-3. L’app funziona **anche offline** dopo la prima apertura.
+**File principali**
+```
+index.html, styles.css, app.js, sw.js, manifest.webmanifest,
+icons/icon-192.png, icons/icon-512.png,
+README.md, readme.html, LICENSE
+```
 
 ---
 
-## 🪪 Crediti e licenza
+## 🚀 Come si gioca (rapido)
+1. **Mescola** la griglia.  
+2. In **Quadrato** seleziona due righe (o due colonne) per scambiarle (**toggle Righe/Colonne**).  
+3. In **Lettere** tocca due celle per scambiarle.  
+4. Usa **Hint** per evidenziare righe/colonne corrette.  
+5. **Controlla** per verificare la soluzione; il timer e le mosse sono tracciati.
 
+---
+
+## 🪪 Crediti & Licenza
 © 2025 **Alessandro Pezzali — pezzaliAPP**  
-Distribuito con licenza **Creative Commons BY-NC-SA 4.0**  
-(Vedi file `LICENSE` per i dettagli).
+Rilasciato con licenza **Creative Commons BY‑NC‑SA 4.0** (vedi `LICENSE`).
 
-> Il design, la logica algoritmica e l’impianto narrativo sono opere di ingegno tutelate dal diritto d’autore  
-> ai sensi della Legge 633/1941 (Italia) e delle convenzioni internazionali vigenti.
+> Il design, la logica algoritmica e l’impianto narrativo sono opere originali tutelate (L. 633/41 — Italia).
 
 ---
 
-## 🌐 Link ufficiali
-
-- Sito: [www.alessandropezzali.it](https://www.alessandropezzali.it)  
-- Autore su Amazon: [Alessandro Pezzali](https://www.amazon.it/stores/Alessandro-Pezzali/author/B0FL13X4YR)  
-- GitHub: [github.com/pezzaliapp](https://github.com/pezzaliapp)
-
----
-
-### ✨ “Il SATOR non è solo un enigma. È un invito a leggere il mondo in ogni direzione.”
+## 🌐 Link
+- Sito: https://www.alessandropezzali.it  
+- GitHub: https://github.com/pezzaliapp  
+- Autore Amazon: https://www.amazon.it/stores/Alessandro-Pezzali/author/B0FL13X4YR

@@ -16,66 +16,82 @@
 <body>
 <header>
   <h1>Il Mistero del <span>SATOR</span></h1>
+  <button id="aboutBtn" class="ghost" title="Informazioni & Crediti">About</button>
   <button id="btnInstall" class="ghost" hidden>Installa</button>
 </header>
 
-<main>
-  <section id="hud">
-    <div class="stat">⏱️ <span id="time">00:00</span></div>
-    <div class="stat">♻️ mosse: <span id="moves">0</span></div>
-    <div class="stat">🧩 modalità: <span id="modeLabel">Quadrato</span></div>
-  </section>
+<main class="shell">
+  <aside class="panel">
+    <section id="hud">
+      <div class="stat">⏱️ <span id="time">00:00</span></div>
+      <div class="stat">♻️ mosse: <span id="moves">0</span></div>
+      <div class="stat">🧩 modalità: <span id="modeLabel">Quadrato</span></div>
+    </section>
 
-  <section id="boardWrap">
-    <div id="rowModeToggle" class="toggle">
-      <button id="toggleAxis" title="Scambia righe ↔ colonne">Righe</button>
-      <span>•</span>
-      <button id="shuffle">Mescola</button>
-      <button id="hint">Hint</button>
-      <span>•</span>
-      <button id="btnRotate">Ruota 90°</button>
-      <button id="btnAO">AΩ</button>
-    </div>
+    <section class="controls">
+      <div id="rowModeToggle" class="toggle">
+        <button id="toggleAxis" title="Scambia righe ↔ colonne">Righe</button>
+        <span>•</span>
+        <button id="shuffle">Mescola</button>
+        <button id="hint">Hint</button>
+        <span>•</span>
+        <button id="btnRotate">Ruota 90°</button>
+        <button id="btnAO">AΩ</button>
+      </div>
+
+      <div class="group">
+        <button id="swap" class="primary">Seleziona 2 per scambiare</button>
+        <button id="check">Controlla</button>
+        <button id="reset">Reset</button>
+      </div>
+
+      <div class="tabs">
+        <button data-mode="quadrato" class="tab active">Quadrato</button>
+        <button data-mode="lettere" class="tab">Lettere</button>
+        <button data-mode="enigma" class="tab">Enigma</button>
+        <button data-mode="libero" class="tab">Libero</button>
+      </div>
+    </section>
+
+    <section id="legend" class="legend">
+      <details open>
+        <summary>📜 Leggenda & significati</summary>
+        <p>
+          Cinque parole di cinque lettere ciascuna: <strong>SATOR AREPO TENET OPERA ROTAS</strong>.<br>
+          Letto in orizzontale e verticale forma il celebre <em>Quadrato Magico</em> palindromo.
+        </p>
+        <ul>
+          <li><b>Quadrato</b>: scambia <u>righe</u> o <u>colonne</u> finché righe e colonne leggono SATOR/AREPO/TENET/OPERA/ROTAS.</li>
+          <li><b>Lettere</b>: clicca due lettere qualsiasi per scambiarle tra loro (puzzle immediato).</li>
+          <li><b>Enigma</b>: evidenzia TENET orizz./vert., la N centrale e — con <b>AΩ</b> — tutte le A e O (alfa/omega).</li>
+          <li><b>Libero</b>: esplora liberamente. Usa <b>Ruota 90°</b> per ruotare l’intera griglia.</li>
+        </ul>
+        <p class="small">
+          Ispirato ai ritrovamenti a Pompei e alle letture cristiane e storiche del SATOR.
+        </p>
+        <p><a href="readme.html" target="_blank" rel="noopener">Leggi la storia completa →</a></p>
+      </details>
+    </section>
+  </aside>
+
+  <section id="boardWrap" class="boardWrap">
     <div id="board"></div>
   </section>
 
-  <section id="controls">
-    <div class="group">
-      <button id="swap" class="primary">Seleziona 2 per scambiare</button>
-      <button id="check">Controlla</button>
-      <button id="reset">Reset</button>
-    </div>
-    <div class="group">
-      <button data-mode="quadrato" class="tab active">Quadrato</button>
-      <button data-mode="lettere" class="tab">Lettere</button>
-      <button data-mode="enigma" class="tab">Enigma</button>
-      <button data-mode="libero" class="tab">Libero</button>
-    </div>
-  </section>
+<div id="aboutModal" class="modal hidden">
+  <div class="modal-card">
+    <button class="modal-close" id="aboutClose" aria-label="Chiudi">✕</button>
+    <h2>About • Il Mistero del SATOR</h2>
+    <p><strong>Autore:</strong> Alessandro Pezzali — pezzaliAPP</p>
+    <p>Un progetto PWA educativo e ludico ispirato al Quadrato Magico <em>SATOR AREPO TENET OPERA ROTAS</em>, tra storia, simbolo e logica.</p>
+    <p><a href="readme.html" target="_blank" rel="noopener">📘 Documentazione completa</a> · <a href="README.md" target="_blank" rel="noopener">README.md</a> · <a href="CREDITS.md" target="_blank" rel="noopener">Crediti</a> · <a href="CHANGELOG.md" target="_blank" rel="noopener">Changelog</a></p>
+  </div>
+</div>
 
-  <section id="legend">
-    <details open>
-      <summary>📜 Leggenda & significati</summary>
-      <p>
-        Cinque parole di cinque lettere ciascuna: <strong>SATOR AREPO TENET OPERA ROTAS</strong>.<br>
-        Letto in orizzontale e verticale forma il celebre <em>Quadrato Magico</em> palindromo.
-      </p>
-      <ul>
-        <li><b>Quadrato</b>: scambia <u>righe</u> o <u>colonne</u> finché righe e colonne leggono SATOR/AREPO/TENET/OPERA/ROTAS.</li>
-        <li><b>Lettere</b>: clicca due lettere qualsiasi per scambiarle tra loro (puzzle immediato).</li>
-        <li><b>Enigma</b>: evidenzia TENET orizz./vert., la N centrale e — con <b>AΩ</b> — tutte le A e O (alfa/omega).</li>
-        <li><b>Libero</b>: esplora liberamente. Usa <b>Ruota 90°</b> per ruotare l’intera griglia.</li>
-      </ul>
-      <p class="small">
-        Ispirato ai ritrovamenti a Pompei e alle letture cristiane e storiche del SATOR.
-      </p>
-      <p><a href="readme.html" target="_blank" rel="noopener">Leggi la storia completa →</a></p>
-    </details>
-  </section>
 </main>
 
 <footer>
-  <p>© Alessandro Pezzali — pezzaliAPP • PWA offline-ready • v2.1</p>
+  <p>© Alessandro Pezzali — pezzaliAPP • PWA offline-ready • v2.3</p>
 </footer>
 
 <script src="app.js"></script>

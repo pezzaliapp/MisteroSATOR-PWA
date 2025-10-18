@@ -217,3 +217,18 @@
   // mescola leggermente per iniziare
   grid = shuffleMatrix(grid); render(false); setUIVisibility();
 })();
+
+/* v2.4 — About modal */
+(function(){
+  const aboutBtn = document.getElementById('aboutBtn');
+  const aboutModal = document.getElementById('aboutModal');
+  const aboutClose = document.getElementById('aboutClose');
+  if(aboutBtn && aboutModal){
+    const hide=()=>aboutModal.classList.add('hidden');
+    const show=()=>aboutModal.classList.remove('hidden');
+    aboutBtn.addEventListener('click', show);
+    aboutClose && aboutClose.addEventListener('click', hide);
+    aboutModal.addEventListener('click', (e)=>{ if(e.target===aboutModal) hide(); });
+    window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') hide(); });
+  }
+})();
