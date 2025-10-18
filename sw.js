@@ -1,5 +1,5 @@
 // sw.js — Il Mistero del SATOR — cache-first app shell (v3)
-const CACHE = 'sator-pwa-v3';
+const CACHE = 'sator-pwa-v4';
 const ASSETS = [
   './',
   './index.html',

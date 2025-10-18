@@ -48,3 +48,37 @@ footer{padding:18px; color:var(--muted); text-align:center}
 @media (min-width:760px){
   #board{gap:8px}
 }
+
+/* ===== v2.2 Responsive & Touch Update ===== */
+:root{
+  --ui-pad: clamp(6px, 1.8vw, 14px);
+}
+main{padding: var(--ui-pad)}
+#boardWrap{display:flex; justify-content:center}
+#board{
+  width: min(92vw, 88dvh);
+  max-width: 680px;
+  margin: 0 auto;
+  grid-template-columns: repeat(5, 1fr);
+}
+.cell{
+  min-width: 48px;
+  font-size: clamp(18px, 7vw, 44px);
+}
+button{padding: clamp(6px, 1.4vw, 10px) clamp(8px, 2.2vw, 14px); font-size: clamp(12px, 2.6vw, 15px)}
+#controls{gap: clamp(6px, 1.6vw, 10px)}
+#rowModeToggle{gap: clamp(6px, 1.6vw, 12px)}
+
+@media (max-width: 640px){
+  header{padding: 10px 10px 6px}
+  h1{font-size: 16px}
+  #controls{flex-direction: column; align-items: stretch}
+  #controls .group{justify-content:center; flex-wrap: wrap}
+  #legend{font-size: 14px}
+}
+
+@media (orientation: landscape) and (max-height: 520px){
+  #legend details[open] summary ~ *{display:none}
+  #hud{font-size: 12px}
+  #board{width: min(90vw, 70dvh)}
+}
