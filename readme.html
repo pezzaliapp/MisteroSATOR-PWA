@@ -1,98 +1,59 @@
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Il Mistero del SATOR — Quadrato Magico (PWA)</title>
-<style>
-body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:#0b1022;color:#eaf1ff;margin:0;padding:30px;line-height:1.6}
-h1,h2,h3{color:#2dd4bf}
-a{color:#22c55e;text-decoration:none}
-a:hover{text-decoration:underline}
-code{background:#111a35;padding:2px 6px;border-radius:5px}
-hr{border:0;border-top:1px solid #1c2550;margin:24px 0}
-section{margin-bottom:28px}
-.center{text-align:center}
-.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
-.btn{display:inline-block;padding:10px 14px;border-radius:10px;background:#0f1840;color:#eaf1ff;text-decoration:none;border:1px solid #1c2550;font-weight:600;margin:4px 0}
-.btn:hover{filter:brightness(1.08)}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>📘 Il Mistero del SATOR — Documentazione</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: #0b1022;
+      color: #e9f1ff;
+      line-height: 1.6;
+      margin: 2rem auto;
+      max-width: 900px;
+      padding: 0 1rem;
+    }
+    h1, h2, h3 { color: #38bdf8; }
+    a.button {
+      display: inline-block;
+      margin: 1rem 0.5rem;
+      padding: 0.6rem 1rem;
+      background: #1d4ed8;
+      color: white;
+      text-decoration: none;
+      border-radius: 0.5rem;
+      transition: background 0.2s;
+    }
+    a.button:hover { background: #2563eb; }
+    footer { margin-top: 2rem; font-size: 0.9em; color: #94a3b8; }
+  </style>
 </head>
 <body>
-<p><a class="btn" href="./">← Torna alla Home del gioco</a></p>
+  <h1>📘 Il Mistero del SATOR — Quadrato Magico (PWA)</h1>
+  <p><strong>Ideato e sviluppato da Alessandro Pezzali — pezzaliAPP © 2025</strong></p>
 
-<h1>🌀 Il Mistero del SATOR — Quadrato Magico (PWA)</h1>
-<p><strong>Ideato e sviluppato da Alessandro Pezzali — pezzaliAPP © 2025</strong></p>
+  <h2>🎮 Istruzioni di gioco</h2>
+  <ul>
+    <li><b>Quadrato:</b> scambia righe o colonne fino a formare SATOR/AREPO/TENET/OPERA/ROTAS.</li>
+    <li><b>Lettere:</b> scambia due celle qualsiasi.</li>
+    <li><b>Enigma:</b> osserva la croce TENET e la N centrale, evidenzia A e O con AΩ.</li>
+    <li><b>Libero:</b> ruota e manipola liberamente la griglia.</li>
+  </ul>
 
-<section>
-<h2>📖 Storia in breve</h2>
-<p>Il Quadrato <em>SATOR AREPO TENET OPERA ROTAS</em> è un palindromo perfetto attestato fin dall’antichità
-(Pompei) e ripreso in epoca medievale. Le sue letture spaziano dalla simbolica cristiana
-(<em>PATER NOSTER</em> con le lettere <strong>A/Ω</strong>) a interpretazioni numerologiche.</p>
-<p class="center mono" style="font-size:18px; line-height:1.2em">
-SATOR<br>AREPO<br>TENET<br>OPERA<br>ROTAS
-</p>
-</section>
+  <h2>🧠 Storia</h2>
+  <p>Il quadrato SATOR è attestato a Pompei (I secolo) e ha ispirato letture simboliche e cristiane (PATER NOSTER, Alfa/Omega).</p>
 
+  <h2>📦 Stack tecnico</h2>
+  <p>HTML5 + CSS3 + JavaScript puro, Service Worker cache-first con auto-update.</p>
 
-<section>
-<h2>🎮 Modalità e istruzioni precise</h2>
-<ol>
-  <li><b>Quadrato (righe/colonne)</b>
-    <ul>
-      <li>Clicca una cella in una riga → tutta la riga si evidenzia.</li>
-      <li>Clicca una cella in <u>un’altra</u> riga per <b>scambiare le due righe</b>.</li>
-      <li>Usa il tasto <b>Righe/Colonne</b> per passare allo scambio colonne.</li>
-      <li>Obiettivo: righe <u>e</u> colonne devono leggere nell’ordine <code>SATOR / AREPO / TENET / OPERA / ROTAS</code>.</li>
-      <li><i>Consiglio</i>: sistema prima “TENET” al centro, poi allinea le altre.</li>
-    </ul>
-  </li>
-  <li><b>Lettere (swap per-cella)</b>
-    <ul>
-      <li>Tocca una cella (si evidenzia), poi tocca la seconda: <b>si scambiano</b>.</li>
-    </ul>
-  </li>
-  <li><b>Enigma</b>
-    <ul>
-      <li>Evidenzia croce <b>TENET</b> e N centrale; <b>AΩ</b> mostra tutte le A e O.</li>
-    </ul>
-  </li>
-  <li><b>Libero</b>
-    <ul>
-      <li>Swap libero; <b>Ruota 90°</b> ruota l’intera griglia.</li>
-    </ul>
-  </li>
-</ol>
-<p><b>Strumenti comuni</b>: <b>Mescola</b>, <b>Hint</b>, <b>Controlla</b>, <b>Reset</b>.</p>
-</section>
+  <h2>🔗 Collegamenti rapidi</h2>
+  <a href="./index.html" class="button">🏠 Torna al Gioco</a>
+  <a href="./CREDITS.html" class="button">📜 Crediti</a>
+  <a href="./CHANGELOG.html" class="button">🧾 Changelog</a>
+  <a href="./LICENSE" class="button">⚖️ Licenza</a>
 
-
-<section>
-<h2>⚙️ Tecnico</h2>
-<ul>
-  <li>HTML5 + CSS3 + JavaScript puro (nessun framework)</li>
-  <li>Service Worker (cache-first con auto-update)</li>
-  <li>Installabile come PWA su iOS/Android/macOS</li>
-</ul>
-</section>
-
-<section>
-<h2>🪪 Licenza</h2>
-<p>© 2025 Alessandro Pezzali — pezzaliAPP • Licenza <a href="LICENSE">CC BY‑NC‑SA 4.0</a>.</p>
-<p>Il design, la logica e la struttura sono opere originali tutelate dalla normativa sul diritto d’autore.</p>
-</section>
-
-<section>
-<h2>🌐 Link</h2>
-<ul>
-<li><a href="https://www.alessandropezzali.it">Sito ufficiale</a></li>
-<li><a href="https://github.com/pezzaliapp">GitHub — pezzaliAPP</a></li>
-<li><a href="https://www.amazon.it/stores/Alessandro-Pezzali/author/B0FL13X4YR">Autore su Amazon</a></li>
-</ul>
-</section>
-
-<hr>
-<p><em>“Il SATOR non è solo un enigma. È un invito a leggere il mondo in ogni direzione.”</em></p>
-
+  <footer>© Alessandro Pezzali — pezzaliAPP.com · v2.4.5</footer>
 </body>
 </html>
