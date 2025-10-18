@@ -147,8 +147,7 @@ header{gap:10px}
 /* Panel width tweak for more room to the board */
 .shell{ grid-template-columns: 340px 1fr; }
 
-/* brand row */
-.brand{display:flex; align-items:center; gap:8px; color:var(--muted); font-weight:600; letter-spacing:.3px; opacity:.9}
+
 .brand img{display:block; border-radius:8px}
 
 /* ===== v2.4.3 Buttons ===== */
@@ -156,3 +155,7 @@ header{gap:10px}
 .btn:hover{filter:brightness(1.08)}
 .btn.primary{background:var(--cta2); border-color:transparent; color:#06140d}
 .btn.row{display:flex; flex-wrap:wrap; gap:10px}
+
+.brand{display:flex;align-items:center;gap:8px;color:var(--muted);font-weight:700;letter-spacing:.3px;margin-bottom:6px}
+.brand a{color:var(--muted);text-decoration:none}
+.brand a:hover{text-decoration:underline;color:var(--ink)}
