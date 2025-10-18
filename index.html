@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1022">
+  <title>Il Mistero del SATOR — Quadrato Magico (PWA)</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" sizes="192x192" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <h1>Il Mistero del <span>SATOR</span></h1>
+  <button id="btnInstall" class="ghost" hidden>Installa</button>
+</header>
+
+<main>
+  <section id="hud">
+    <div class="stat">⏱️ <span id="time">00:00</span></div>
+    <div class="stat">♻️ mosse: <span id="moves">0</span></div>
+    <div class="stat">🧩 modalità: <span id="modeLabel">Quadrato</span></div>
+  </section>
+
+  <section id="boardWrap">
+    <div id="rowModeToggle" class="toggle">
+      <button id="toggleAxis" title="Scambia righe ↔ colonne">Righe</button>
+      <span>•</span>
+      <button id="shuffle">Mescola</button>
+      <button id="hint">Hint</button>
+    </div>
+    <div id="board"></div>
+  </section>
+
+  <section id="controls">
+    <div class="group">
+      <button id="swap" class="primary">Seleziona 2 per scambiare</button>
+      <button id="check">Controlla</button>
+      <button id="reset">Reset</button>
+    </div>
+    <div class="group">
+      <button data-mode="quadrato" class="tab active">Quadrato</button>
+      <button data-mode="enigma" class="tab">Enigma</button>
+      <button data-mode="libero" class="tab">Libero</button>
+    </div>
+  </section>
+
+  <section id="legend">
+    <details open>
+      <summary>📜 Leggenda & significati</summary>
+      <p>
+        Cinque parole di cinque lettere ciascuna: <strong>SATOR AREPO TENET OPERA ROTAS</strong>.<br>
+        Letto in orizzontale e verticale forma il celebre <em>Quadrato Magico</em> palindromo.
+      </p>
+      <ul>
+        <li><b>Quadrato</b>: rimetti in ordine righe e colonne finché anche le colonne
+            formano le stesse parole dall'alto verso il basso.</li>
+        <li><b>Enigma</b>: evidenzia le letture speciali (PATERNOSTER, croce A‑O con N al centro, palindromi TENET).</li>
+        <li><b>Libero</b>: esplora, ruota e osserva le simmetrie.</li>
+      </ul>
+      <p class="small">
+        Ispirato ai ritrovamenti a Pompei e alle letture cristiane e storiche del SATOR.
+      </p>
+      <p><a href="readme.html" target="_blank" rel="noopener">Leggi la storia completa →</a></p>
+    </details>
+  </section>
+</main>
+
+<footer>
+  <p>© Alessandro Pezzali — pezzaliAPP • PWA offline‑ready • v1.0</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
