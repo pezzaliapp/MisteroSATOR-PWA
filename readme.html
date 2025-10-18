@@ -14,9 +14,12 @@ hr{border:0;border-top:1px solid #1c2550;margin:24px 0}
 section{margin-bottom:28px}
 .center{text-align:center}
 .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
+.btn{display:inline-block;padding:10px 14px;border-radius:10px;background:#0f1840;color:#eaf1ff;text-decoration:none;border:1px solid #1c2550;font-weight:600;margin:4px 0}
+.btn:hover{filter:brightness(1.08)}
 </style>
 </head>
 <body>
+<p><a class="btn" href="./">← Torna alla Home del gioco</a></p>
 
 <h1>🌀 Il Mistero del SATOR — Quadrato Magico (PWA)</h1>
 <p><strong>Ideato e sviluppato da Alessandro Pezzali — pezzaliAPP © 2025</strong></p>
@@ -31,16 +34,38 @@ SATOR<br>AREPO<br>TENET<br>OPERA<br>ROTAS
 </p>
 </section>
 
+
 <section>
-<h2>🎮 Modalità</h2>
-<ul>
-  <li><b>Quadrato</b>: scambia righe o colonne (toggle Righe/Colonne).</li>
-  <li><b>Lettere</b>: scambia due lettere toccando due celle.</li>
-  <li><b>Enigma</b>: evidenzia TENET orizz./vert. e, con <b>AΩ</b>, tutte le A e O.</li>
-  <li><b>Libero</b>: manipola senza vincoli, prova <b>Ruota 90°</b>.</li>
-</ul>
-<p><i>v2.3 Desk layout</i>: su desktop pannello a sinistra e griglia a destra; su smartphone layout a colonna.</p>
+<h2>🎮 Modalità e istruzioni precise</h2>
+<ol>
+  <li><b>Quadrato (righe/colonne)</b>
+    <ul>
+      <li>Clicca una cella in una riga → tutta la riga si evidenzia.</li>
+      <li>Clicca una cella in <u>un’altra</u> riga per <b>scambiare le due righe</b>.</li>
+      <li>Usa il tasto <b>Righe/Colonne</b> per passare allo scambio colonne.</li>
+      <li>Obiettivo: righe <u>e</u> colonne devono leggere nell’ordine <code>SATOR / AREPO / TENET / OPERA / ROTAS</code>.</li>
+      <li><i>Consiglio</i>: sistema prima “TENET” al centro, poi allinea le altre.</li>
+    </ul>
+  </li>
+  <li><b>Lettere (swap per-cella)</b>
+    <ul>
+      <li>Tocca una cella (si evidenzia), poi tocca la seconda: <b>si scambiano</b>.</li>
+    </ul>
+  </li>
+  <li><b>Enigma</b>
+    <ul>
+      <li>Evidenzia croce <b>TENET</b> e N centrale; <b>AΩ</b> mostra tutte le A e O.</li>
+    </ul>
+  </li>
+  <li><b>Libero</b>
+    <ul>
+      <li>Swap libero; <b>Ruota 90°</b> ruota l’intera griglia.</li>
+    </ul>
+  </li>
+</ol>
+<p><b>Strumenti comuni</b>: <b>Mescola</b>, <b>Hint</b>, <b>Controlla</b>, <b>Reset</b>.</p>
 </section>
+
 
 <section>
 <h2>⚙️ Tecnico</h2>
