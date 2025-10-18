@@ -31,6 +31,9 @@
       <span>•</span>
       <button id="shuffle">Mescola</button>
       <button id="hint">Hint</button>
+      <span>•</span>
+      <button id="btnRotate">Ruota 90°</button>
+      <button id="btnAO">AΩ</button>
     </div>
     <div id="board"></div>
   </section>
@@ -43,6 +46,7 @@
     </div>
     <div class="group">
       <button data-mode="quadrato" class="tab active">Quadrato</button>
+      <button data-mode="lettere" class="tab">Lettere</button>
       <button data-mode="enigma" class="tab">Enigma</button>
       <button data-mode="libero" class="tab">Libero</button>
     </div>
@@ -56,10 +60,10 @@
         Letto in orizzontale e verticale forma il celebre <em>Quadrato Magico</em> palindromo.
       </p>
       <ul>
-        <li><b>Quadrato</b>: rimetti in ordine righe e colonne finché anche le colonne
-            formano le stesse parole dall'alto verso il basso.</li>
-        <li><b>Enigma</b>: evidenzia le letture speciali (PATERNOSTER, croce A‑O con N al centro, palindromi TENET).</li>
-        <li><b>Libero</b>: esplora, ruota e osserva le simmetrie.</li>
+        <li><b>Quadrato</b>: scambia <u>righe</u> o <u>colonne</u> finché righe e colonne leggono SATOR/AREPO/TENET/OPERA/ROTAS.</li>
+        <li><b>Lettere</b>: clicca due lettere qualsiasi per scambiarle tra loro (puzzle immediato).</li>
+        <li><b>Enigma</b>: evidenzia TENET orizz./vert., la N centrale e — con <b>AΩ</b> — tutte le A e O (alfa/omega).</li>
+        <li><b>Libero</b>: esplora liberamente. Usa <b>Ruota 90°</b> per ruotare l’intera griglia.</li>
       </ul>
       <p class="small">
         Ispirato ai ritrovamenti a Pompei e alle letture cristiane e storiche del SATOR.
@@ -70,7 +74,7 @@
 </main>
 
 <footer>
-  <p>© Alessandro Pezzali — pezzaliAPP • PWA offline‑ready • v1.0</p>
+  <p>© Alessandro Pezzali — pezzaliAPP • PWA offline-ready • v2.1</p>
 </footer>
 
 <script src="app.js"></script>

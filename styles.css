@@ -1,7 +1,7 @@
-/* Il Mistero del SATOR — Stili */
+/* Il Mistero del SATOR — Stili v2.1 */
 :root{
   --bg:#0b1022; --ink:#eaf1ff; --muted:#93a4cc;
-  --card:#101739; --line:#1c2550; --cta:#2dd4bf; --cta2:#22c55e; --warn:#f59e0b;
+  --card:#101739; --line:#1c2550; --cta:#2dd4bf; --cta2:#22c55e; --warn:#f59e0b; --alpha:#60a5fa;
 }
 *{box-sizing:border-box}
 html,body{height:100%}
@@ -24,7 +24,7 @@ button.tab.active{outline:2px solid var(--cta);}
 main{max-width:960px; margin:0 auto; padding:10px}
 #hud{display:flex; gap:16px; padding:10px 2px; color:var(--muted)}
 #boardWrap{margin:12px 0}
-#rowModeToggle{display:flex; gap:10px; align-items:center; margin-bottom:8px}
+#rowModeToggle{display:flex; gap:10px; align-items:center; margin-bottom:8px; flex-wrap:wrap}
 #board{
   display:grid; grid-template-columns:repeat(5, minmax(48px, 1fr)); gap:6px;
   user-select:none;
@@ -38,10 +38,7 @@ main{max-width:960px; margin:0 auto; padding:10px}
 .cell.sel{outline:2px solid var(--cta)}
 .cell.hint{background:linear-gradient(180deg,#13324a,#10263e);}
 .cell.pal{background:linear-gradient(180deg,#153b1d,#0e2a15);}
-.axisBadge{
-  position:absolute; left:-8px; top:-8px; background:var(--warn); color:#130b00;
-  font-size:11px; padding:2px 6px; border-radius:999px; border:0
-}
+.cell.ao{outline:2px dashed var(--alpha)}
 #controls{display:flex; flex-wrap:wrap; gap:8px; align-items:center; justify-content:space-between}
 #controls .group{display:flex; gap:8px; align-items:center}
 #legend{margin-top:8px}

@@ -1,4 +1,4 @@
-/* Il Mistero del SATOR — PWA game logic — v1.0 */
+/* Il Mistero del SATOR — PWA game logic — v2.1 */
 (function(){
   'use strict';
 
@@ -15,15 +15,18 @@
   const btnShuffle = document.getElementById('shuffle');
   const btnHint = document.getElementById('hint');
   const btnAxis = document.getElementById('toggleAxis');
+  const btnRotate = document.getElementById('btnRotate');
+  const btnAO = document.getElementById('btnAO');
   const btnInstall = document.getElementById('btnInstall');
 
   let grid = [];          // 5x5 lettere
-  let axis = 'row';       // row | col — modalità scambio
-  let mode = 'quadrato';  // quadrato | enigma | libero
-  let firstPick = null;
+  let axis = 'row';       // row | col — modalità scambio (Quadrato)
+  let mode = 'quadrato';  // quadrato | lettere | enigma | libero
+  let firstPick = null;   // riga/colonna o cella a seconda della modalità
   let moves = 0;
   let startTs = Date.now();
   let timerId = 0;
+  let showAO = false;     // evidenzia A e O (Alfa/Omega) in Enigma
 
   // --- PWA SW ---
   if ('serviceWorker' in navigator) {
@@ -41,10 +44,7 @@
   });
 
   // --- Helpers ---
-  const clone = (m)=>m.map(r=>r.slice());
   const makeSquare = ()=>WORDS.map(w=>w.split(''));
-  const rotate90 = (m)=>m[0].map((_,i)=>m.map(r=>r[i]).reverse());
-  const transpose = (m)=>m[0].map((_,i)=>m.map(r=>r[i]));
   const isSator = (m)=>{
     for(let r=0;r<SIZE;r++){
       const row = m[r].join('');
@@ -53,7 +53,7 @@
     }
     return true;
   };
-  const toStr = (m)=>m.map(r=>r.join('')).join('\n');
+  const rotate90 = (m)=> m[0].map((_,i)=>m.map(r=>r[i]).reverse());
 
   function pad(n){return String(n).padStart(2,'0')}
   function tick(){
@@ -70,15 +70,20 @@
         d.textContent = ch;
         d.dataset.x = x; d.dataset.y = y;
         if (mode==='enigma'){
-          // evidenzia N centrale e palindromi TENET
+          // N centrale
           if (x===2 && y===2) d.classList.add('hint');
-          if (WORDS[2][x]===grid[y][x] && (y===2 || x===2)) d.classList.add('pal');
+          // croce TENET
+          if (y===2 || x===2){
+            const letter = grid[y][x];
+            if ((y===2 && WORDS[2][x]===letter) || (x===2 && WORDS[y][2]===letter))
+              d.classList.add('pal');
+          }
+          if (showAO && (ch==='A' || ch==='O')) d.classList.add('ao');
         }
         boardEl.appendChild(d);
       });
     });
-    if (hints && mode==='quadrato'){
-      // evidenzia se una riga o colonna è corretta
+    if (hints && (mode==='quadrato' || mode==='lettere')){
       for(let i=0;i<SIZE;i++){
         const row = grid[i].join('');
         const col = grid.map(r=>r[i]).join('');
@@ -99,10 +104,10 @@
   }
 
   function shuffleMatrix(m){
-    const rows=[0,1,2,3,4].sort(()=>Math.random()-.5);
-    const cols=[0,1,2,3,4].sort(()=>Math.random()-.5);
+    const flat = m.flat();
+    for(let i=flat.length-1;i>0;i--){ const j=(Math.random()* (i+1))|0; [flat[i],flat[j]]=[flat[j],flat[i]]; }
     const out = Array.from({length:5},()=>Array(5).fill(''));
-    for(let y=0;y<5;y++) for(let x=0;x<5;x++) out[y][x] = m[rows[y]][cols[x]];
+    for(let y=0,k=0;y<5;y++) for(let x=0;x<5;x++,k++) out[y][x]=flat[k];
     return out;
   }
 
@@ -113,9 +118,23 @@
     render(false);
   }
 
+  function setUIVisibility(){
+    const rowToggle = document.getElementById('rowModeToggle');
+    const swapBtn   = document.getElementById('swap');
+    // mostra i tool extra in tutte le modalità; ma solo in Quadrato ha senso Axis/Swap
+    if (mode==='quadrato'){
+      btnAxis.style.display = 'inline-block';
+      swapBtn.style.display = 'inline-block';
+    } else {
+      btnAxis.style.display = 'none';
+      swapBtn.style.display = 'none';
+    }
+  }
+
   function setMode(m){
     mode = m; modeLabel.textContent = m[0].toUpperCase()+m.slice(1);
     modeButtons.forEach(b=>b.classList.toggle('active', b.dataset.mode===m));
+    firstPick=null; clearSelection(); setUIVisibility();
     render(false);
   }
 
@@ -127,29 +146,46 @@
   function selectCell(e){
     const t = e.target;
     if (!t.classList.contains('cell')) return;
-    // in modalità swap, scegli estremi della riga/colonna da scambiare
     const x = +t.dataset.x, y=+t.dataset.y;
-    const key = axis==='row' ? y : x;
 
-    if (firstPick===null){
-      firstPick = key;
-      markSelection(key);
-    } else if (firstPick === key){
-      clearSelection(); firstPick=null;
-    } else {
-      // esegui swap tra firstPick e key su axis
-      if (axis==='row'){
-        const tmp = grid[firstPick]; grid[firstPick]=grid[key]; grid[key]=tmp;
+    if (mode==='quadrato'){
+      // scegli riga/colonna
+      const key = axis==='row' ? y : x;
+      if (firstPick===null){
+        firstPick = key; markSelection(key);
+      } else if (firstPick === key){
+        clearSelection(); firstPick=null;
       } else {
-        for(let r=0;r<5;r++){ const tmp=grid[r][firstPick]; grid[r][firstPick]=grid[r][key]; grid[r][key]=tmp; }
+        if (axis==='row'){
+          const tmp = grid[firstPick]; grid[firstPick]=grid[key]; grid[key]=tmp;
+        } else {
+          for(let r=0;r<5;r++){ const tmp=grid[r][firstPick]; grid[r][firstPick]=grid[r][key]; grid[r][key]=tmp; }
+        }
+        moves++; movesEl.textContent = moves; firstPick=null; clearSelection(); render(true);
+        if (isSator(grid)){ clearInterval(timerId); setTimeout(()=>alert(`🎉 Quadrato Magico ripristinato!\nMosse: ${moves}\nTempo:\u0020${timeEl.textContent}`), 50); }
       }
-      moves++; movesEl.textContent = moves; firstPick=null; clearSelection(); render(true);
-      if (isSator(grid)){
-        clearInterval(timerId);
-        setTimeout(()=>alert(`🎉 Quadrato Magico ripristinato!\nMosse: ${moves}\nTempo:\u0020${timeEl.textContent}`), 50);
-      }
+      return;
     }
+
+    if (mode==='lettere' || mode==='libero'){
+      // swap lettera-lettera (in Libero non c'è vittoria)
+      if (firstPick===null){
+        firstPick = {x,y};
+        [...boardEl.children].forEach((c,idx)=>{
+          const yy=Math.floor(idx/5), xx=idx%5;
+          if (xx===x && yy===y) c.classList.add('sel');
+        });
+      } else {
+        const a = firstPick; firstPick=null;
+        const tmp = grid[a.y][a.x]; grid[a.y][a.x] = grid[y][x]; grid[y][x]=tmp;
+        moves++; movesEl.textContent = moves; clearSelection(); render(true);
+        if (mode==='lettere' && isSator(grid)){ clearInterval(timerId); setTimeout(()=>alert(`🎉 Quadrato Magico ricomposto!\nMosse: ${moves}\nTempo:\u0020${timeEl.textContent}`), 50); }
+      }
+      return;
+    }
+    // enigma: nessuna azione oltre alla selezione visiva
   }
+
   function markSelection(key){
     [...boardEl.children].forEach((c,idx)=>{
       const y=Math.floor(idx/5), x=idx%5;
@@ -157,13 +193,15 @@
     });
   }
   function clearSelection(){
-    [...boardEl.children].forEach(c=>c.classList.remove('sel'));
+    [...boardEl.children].forEach(c=>c.classList.remove('sel','ao','pal','hint','sel'));
   }
 
   // --- Buttons ---
   btnShuffle.addEventListener('click', ()=>{ grid=shuffleMatrix(grid); render(false); });
   btnHint.addEventListener('click', ()=>render(true));
   btnAxis.addEventListener('click', swapAxis);
+  btnRotate.addEventListener('click', ()=>{ grid = rotate90(grid); moves++; movesEl.textContent=moves; render(true); });
+  btnAO.addEventListener('click', ()=>{ showAO = !showAO; render(true); });
   btnSwap.addEventListener('click', ()=>{ firstPick=null; clearSelection(); });
   btnCheck.addEventListener('click', ()=>{
     const ok = isSator(grid);
@@ -177,5 +215,5 @@
   // --- Init ---
   reset();
   // mescola leggermente per iniziare
-  grid = shuffleMatrix(grid); render(false);
+  grid = shuffleMatrix(grid); render(false); setUIVisibility();
 })();
