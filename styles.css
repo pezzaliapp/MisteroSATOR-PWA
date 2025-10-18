@@ -1,39 +1,50 @@
-/* Il Mistero del SATOR — Stili v2.5 Mobile Perfect */
+/* Il Mistero del SATOR — Stili v2.6 Dynamic Gradient Edition */
 :root{
-  --bg:#0b1022; --ink:#eaf1ff; --muted:#93a4cc;
+  --bg1:#0b1022; --bg2:#161f46; --bg3:#2b3a74;
+  --ink:#eaf1ff; --muted:#93a4cc;
   --card:#101739; --line:#1c2550; --cta:#2dd4bf; --cta2:#22c55e; --warn:#f59e0b; --alpha:#60a5fa;
   --footer-h: 48px;
 }
 
-*{box-sizing:border-box}
-html,body{height:100%;margin:0;padding:0}
+/* ==== RESET BASE ==== */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow-x:hidden}
+
+/* ==== SFONDO ANIMATO ==== */
 body{
   font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,Arial;
   color:var(--ink);
-  background:radial-gradient(1200px 600px at 50% -20%,#182043,var(--bg));
+  background:linear-gradient(125deg, var(--bg1), var(--bg2), var(--bg3));
+  background-size:400% 400%;
+  animation:bgFlow 28s ease-in-out infinite;
   display:flex;flex-direction:column;
-  overflow-x:hidden;
+}
+@keyframes bgFlow{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
 
-/* ==== Header ==== */
+/* ==== HEADER ==== */
 header{
   display:flex;justify-content:space-between;align-items:center;
   padding:14px 12px 8px;border-bottom:1px solid var(--line);
   background:#0e1533cc;backdrop-filter:blur(6px);
   position:sticky;top:0;z-index:20;
 }
-h1{margin:0;font-size:20px;letter-spacing:.5px}
+h1{margin:0;font-size:20px;letter-spacing:.5px;text-transform:uppercase}
 h1 span{color:var(--cta);text-shadow:0 0 12px #2dd4bf55}
 
-/* ==== Buttons ==== */
+/* ==== BUTTONS ==== */
 button{appearance:none;border:1px solid var(--line);background:var(--card);color:var(--ink);
-  padding:8px 12px;border-radius:10px;cursor:pointer}
+  padding:8px 12px;border-radius:10px;cursor:pointer;transition:.2s}
 button.primary{border-color:transparent;background:var(--cta2);color:#06140d;font-weight:700}
 button.tab{background:#0f1840;border-color:transparent}
 button.tab.active{outline:2px solid var(--cta)}
 button.ghost{background:transparent}
+button:hover{filter:brightness(1.1)}
 
-/* ==== Layout generale ==== */
+/* ==== LAYOUT PRINCIPALE ==== */
 main.shell{
   display:flex;flex:1;flex-direction:row;
   justify-content:center;align-items:stretch;
@@ -41,7 +52,7 @@ main.shell{
   padding:clamp(8px,1.5vw,16px);
 }
 
-/* ==== Pannello info ==== */
+/* ==== PANEL SINISTRO ==== */
 aside.panel{
   display:flex;flex-direction:column;gap:12px;
   width:340px;min-width:280px;
@@ -49,26 +60,29 @@ aside.panel{
 }
 .panel .group,.panel .tabs,.panel .controls{display:flex;flex-wrap:wrap;gap:8px}
 
-/* ==== Griglia di gioco ==== */
+/* ==== GRIGLIA DI GIOCO ==== */
 #boardWrap{flex:1;display:flex;align-items:center;justify-content:center;min-height:60vh}
 #board{
   display:grid;grid-template-columns:repeat(5,1fr);gap:8px;
   width:min(64vw,82svh);max-width:720px;
+  transition:transform .4s ease;
 }
 .cell{
   aspect-ratio:1/1;
   display:flex;align-items:center;justify-content:center;
   font-weight:800;font-size:clamp(22px,6vw,44px);
   border:1px solid var(--line);border-radius:12px;
-  background:linear-gradient(180deg,#0f1736,#0c132e);
+  background:linear-gradient(180deg,#101a44,#0c132e);
   box-shadow:inset 0 1px 0 #2b356f55,0 8px 20px #0006;
+  transition:transform .15s;
 }
+.cell:hover{transform:scale(1.04)}
 .cell.sel{outline:2px solid var(--cta)}
 .cell.hint{background:linear-gradient(180deg,#13324a,#10263e);}
 .cell.pal{background:linear-gradient(180deg,#153b1d,#0e2a15);}
 .cell.ao{outline:2px dashed var(--alpha)}
 
-/* ==== Mobile Perfect (iPhone) ==== */
+/* ==== MOBILE PERFECT (IPHONE) ==== */
 @media (max-width: 860px){
   main.shell{flex-direction:column;align-items:center;padding-bottom:calc(var(--footer-h) + 20px)}
   aside.panel{width:100%;padding:0 10px;order:2}
@@ -79,13 +93,13 @@ aside.panel{
   h1{font-size:18px}
 }
 
-/* ==== Landscape compatibilità iPhone ==== */
+/* ==== LANDSCAPE IPHONE ==== */
 @media (orientation:landscape) and (max-height:520px){
   #legend details[open] summary ~ *{display:none}
   #board{width:min(90vw,70dvh)}
 }
 
-/* ==== Footer ==== */
+/* ==== FOOTER ==== */
 footer{
   color:var(--muted);text-align:center;
   border-top:1px solid var(--line);
@@ -94,18 +108,23 @@ footer{
   position:sticky;bottom:0;z-index:10;
 }
 
-/* ==== Pulsanti e Brand ==== */
+/* ==== BRAND & BUTTONS ==== */
 .brand{display:flex;align-items:center;gap:8px;color:var(--muted);font-weight:700;letter-spacing:.3px;margin-bottom:6px}
 .brand a{color:var(--muted);text-decoration:none}
 .brand a:hover{text-decoration:underline;color:var(--ink)}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:#0f1840;color:var(--ink);text-decoration:none;font-weight:600;letter-spacing:.2px;cursor:pointer}
-.btn:hover{filter:brightness(1.08)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:#0f1840;color:var(--ink);text-decoration:none;font-weight:600;letter-spacing:.2px;cursor:pointer;transition:.2s}
+.btn:hover{filter:brightness(1.1)}
 .btn.primary{background:var(--cta2);border-color:transparent;color:#06140d}
 .btn.row{display:flex;flex-wrap:wrap;gap:10px}
 
-/* ==== Modal About ==== */
+/* ==== MODAL ABOUT ==== */
 .modal{position:fixed;inset:0;background:#0008;display:flex;align-items:center;justify-content:center;z-index:60}
 .modal.hidden{display:none}
 .modal-card{background:#0f1736;border:1px solid var(--line);border-radius:14px;padding:18px;width:min(560px,92vw);box-shadow:0 24px 60px #000a}
 .modal-card h2{margin-top:0;color:var(--cta)}
 .modal-close{position:absolute;right:16px;top:12px;background:transparent;border:1px solid var(--line);border-radius:10px;padding:4px 8px;color:var(--ink);cursor:pointer}
+
+/* ==== TOUCH OPTIMIZATION ==== */
+#board, .cell { will-change: transform; }
+* { -webkit-tap-highlight-color: transparent; }
+:root { scroll-behavior: smooth; }
